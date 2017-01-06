@@ -1,6 +1,6 @@
 # VBinjectPowershell
 
-Used as a macro in MS Word to inject a Empire session in the background.
+Used as a macro in MS Word to inject a Empire session in the background automatically when word is opened.
 
 User must enable macros for it to work.
 
